@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kalcer/pages/home_page.dart';
 // import 'package:kalcer/pages/home_page.dart';
 import 'package:kalcer/pages/login_page.dart';
 
@@ -12,6 +11,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: HomePage());
+    return const MaterialApp(home: LoginPage());
   }
 }
