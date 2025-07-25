@@ -152,39 +152,6 @@ class _SekilasBudayaPageState extends State<SekilasBudayaPage> {
     await _loadCityData(searchText);
   }
 
-  Future<void> _testConnection() async {
-    if (_geminiService == null) {
-      _showErrorMessage('Service error: $_initError', 'Test');
-      return;
-    }
-
-    try {
-      setState(() {
-        _isLoading = true;
-      });
-
-      print("🔄 Testing connection to Gemini...");
-      final response = await _geminiService!.getCityInfo('Jakarta');
-      print('✅ Test successful. Response length: ${response.length}');
-
-      setState(() {
-        _isLoading = false;
-      });
-
-      _showSuccessMessage(
-        '✅ Koneksi AI berhasil! Response: ${response.length} karakter',
-      );
-    } catch (e) {
-      print('❌ Connection test failed: $e');
-
-      setState(() {
-        _isLoading = false;
-      });
-
-      _showErrorMessage('❌ Test koneksi gagal: ${e.toString()}', 'Test');
-    }
-  }
-
   void _showSuccessMessage(String message) {
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -274,7 +241,7 @@ class _SekilasBudayaPageState extends State<SekilasBudayaPage> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(
-                'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+                'https://a.travel-assets.com/findyours-php/viewfinder/images/res70/210000/210083-Central-Java.jpg',
               ),
               fit: BoxFit.cover,
             ),
@@ -319,10 +286,7 @@ class _SekilasBudayaPageState extends State<SekilasBudayaPage> {
         ),
 
         // Search Bar
-        Positioned(left: 40, right: 40, bottom: 20, child: _buildSearchBar()),
-
-        // Debug Controls
-        Positioned(right: 10, top: 50, child: _buildDebugControls()),
+        Positioned(left: 40, right: 40, bottom: 10, child: _buildSearchBar()),
       ],
     );
   }
@@ -431,47 +395,6 @@ class _SekilasBudayaPageState extends State<SekilasBudayaPage> {
             vertical: 15,
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildDebugControls() {
-    return Column(
-      children: [
-        _buildDebugButton(
-          'Test',
-          Colors.green,
-          _testConnection,
-          tooltip: 'Test koneksi AI',
-        ),
-        const SizedBox(height: 3),
-        _buildDebugButton(
-          'Reset',
-          Colors.orange,
-          _initializeService,
-          tooltip: 'Reset service',
-        ),
-      ],
-    );
-  }
-
-  Widget _buildDebugButton(
-    String text,
-    Color color,
-    VoidCallback onPressed, {
-    String? tooltip,
-  }) {
-    return Tooltip(
-      message: tooltip ?? text,
-      child: ElevatedButton(
-        onPressed: _isLoading ? null : onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-          minimumSize: const Size(40, 25),
-        ),
-        child: Text(text, style: const TextStyle(fontSize: 8)),
       ),
     );
   }

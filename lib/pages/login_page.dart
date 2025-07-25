@@ -149,28 +149,25 @@ class _LoginPageState extends State<LoginPage> {
                           child: topSection,
                         ),
                         SizedBox(height: screenHeight * 0.05),
-                        Transform.translate(
-                          offset: const Offset(0, 30), // Geser ke bawah 30px
-                          child: Image.asset(
-                            'assets/login_picture.png',
-                            height: 150,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Container(
-                                height: 150,
-                                width: 150,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[300],
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: const Icon(
-                                  Icons.image,
-                                  size: 50,
-                                  color: Colors.grey,
-                                ),
-                              );
-                            },
-                          ),
+                        Image.asset(
+                          'assets/login_picture.png',
+                          height: 150,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: const Icon(
+                                Icons.image,
+                                size: 50,
+                                color: Colors.grey,
+                              ),
+                            );
+                          },
                         ),
                       ],
                     ),
