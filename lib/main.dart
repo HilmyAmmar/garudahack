@@ -12,9 +12,7 @@ Future<void> main() async {
 
     final apiKey = dotenv.env['GEMINI_API_KEY'];
     if (apiKey != null && apiKey.isNotEmpty) {
-      print(
-        "✅ API Key loaded: ${apiKey.substring(0, 10)}...${apiKey.substring(apiKey.length - 4)}",
-      );
+      print("✅ API Key loaded");
     } else {
       print("❌ API Key not found or empty");
     }

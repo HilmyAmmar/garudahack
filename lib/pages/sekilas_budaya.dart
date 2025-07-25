@@ -446,7 +446,6 @@ class _SekilasBudayaPageState extends State<SekilasBudayaPage> {
             _currentCity.isEmpty ? 'Keunikan Indonesia' : 'Fakta Unik',
             _currentCityInfo.unik,
           ),
-          if (_cityCache.isNotEmpty) _buildCacheInfo(),
         ],
       );
     }
@@ -490,29 +489,6 @@ class _SekilasBudayaPageState extends State<SekilasBudayaPage> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildCacheInfo() {
-    return Container(
-      margin: const EdgeInsets.only(top: 10),
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.blue.withOpacity(0.3)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Icon(Icons.cached, size: 16, color: Colors.blue),
-          const SizedBox(width: 8),
-          Text(
-            'Cache: ${_cityCache.length} kota tersimpan',
-            style: const TextStyle(fontSize: 12, color: Colors.blue),
-          ),
-        ],
       ),
     );
   }
