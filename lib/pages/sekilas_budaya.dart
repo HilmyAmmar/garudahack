@@ -249,15 +249,12 @@ class _SekilasBudayaPageState extends State<SekilasBudayaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff721908),
+      backgroundColor: const Color(0xFFFBF5EB),
       body: SingleChildScrollView(
         child: Column(
           children: [
             // Header Section
             _buildHeaderSection(),
-
-            // Gallery Section
-            _buildGallerySection(),
 
             // Summary Section
             _buildSummarySection(),
@@ -479,40 +476,16 @@ class _SekilasBudayaPageState extends State<SekilasBudayaPage> {
     );
   }
 
-  Widget _buildGallerySection() {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(20),
-      decoration: const BoxDecoration(color: Color(0xff721908)),
-      child: Column(
-        children: [
-          const Text(
-            'Galeri Budaya Indonesia',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 20),
-          _buildImageCard(
-            'https://images.unsplash.com/photo-1544550285-f813152fb2fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildSummarySection() {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(30),
       decoration: const BoxDecoration(
-        color: Color(0xFFF5E6D3),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(24),
-          topRight: Radius.circular(24),
-        ),
+        color: Color(0xFFFBF5EB),
+        // borderRadius: BorderRadius.only(
+        //   topLeft: Radius.circular(24),
+        //   topRight: Radius.circular(24),
+        // ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -564,9 +537,13 @@ class _SekilasBudayaPageState extends State<SekilasBudayaPage> {
           children: [
             Icon(Icons.search_outlined, size: 48, color: Color(0xff721908)),
             SizedBox(height: 16),
-            Text(
-              'Silakan masukkan nama kota Indonesia untuk melihat informasi budayanya.',
-              style: TextStyle(color: Color(0xff721908), fontSize: 14),
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                'Silakan masukkan nama kota Indonesia untuk melihat informasi budayanya.',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Color(0xff721908), fontSize: 14),
+              ),
             ),
           ],
         ),
@@ -613,19 +590,6 @@ class _SekilasBudayaPageState extends State<SekilasBudayaPage> {
             style: const TextStyle(fontSize: 12, color: Colors.blue),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildImageCard(String imageUrl) {
-    return Container(
-      height: 120,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        image: DecorationImage(
-          image: NetworkImage(imageUrl),
-          fit: BoxFit.cover,
-        ),
       ),
     );
   }

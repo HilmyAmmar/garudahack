@@ -88,7 +88,7 @@ class _CardItemState extends State<CardItem> {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: const Color(0xFFD4A574).withOpacity(0.3),
+        color: const Color(0x40721908),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(
@@ -103,7 +103,7 @@ class _CardItemState extends State<CardItem> {
                   width: 48,
                   height: 48,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF8B4513),
+                    color: const Color(0xFF721908),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: const Icon(
@@ -122,21 +122,21 @@ class _CardItemState extends State<CardItem> {
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
-                          color: Color(0xFF8B4513),
+                          color: Color(0xFF721908),
                         ),
                       ),
                       Text(
                         widget.post['subtitle'] ??
                             'Cultural Storyteller, Jakarta Utara',
                         style: const TextStyle(
-                          color: Color(0xFF8B4513),
+                          color: Color(0xFF721908),
                           fontSize: 13,
                         ),
                       ),
                       Text(
                         widget.post['timestamp'] ?? '24 Juli 2025 | 17.16 PM',
                         style: const TextStyle(
-                          color: Color(0xFF8B4513),
+                          color: Color(0xFF721908),
                           fontSize: 13,
                         ),
                       ),
@@ -157,7 +157,7 @@ class _CardItemState extends State<CardItem> {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF8B4513),
+                      color: const Color(0xFF721908),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
@@ -178,7 +178,7 @@ class _CardItemState extends State<CardItem> {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF8B4513),
+                      color: const Color(0xFF721908),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
@@ -200,13 +200,12 @@ class _CardItemState extends State<CardItem> {
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF8B4513),
+                  color: Color(0xFF721908),
                 ),
                 children: [
                   TextSpan(
                     text: widget.post['title'] ?? 'Depok = Gotham City ',
                   ),
-                  const TextSpan(text: '🤔', style: TextStyle(fontSize: 18)),
                 ],
               ),
             ),
@@ -218,7 +217,7 @@ class _CardItemState extends State<CardItem> {
                   'Ini hal yang menurut gue paling menarik. Warga Depok itu sadar banget kota mereka sering jadi bahan bercandaan. Meme tentang Depok udah viral dari dulu. Tapi mereka nggak marah ....',
               style: const TextStyle(
                 fontSize: 14,
-                color: Color(0xFF5D4037),
+                color: Color(0xFF721908),
                 height: 1.4,
               ),
             ),
@@ -232,8 +231,8 @@ class _CardItemState extends State<CardItem> {
                   decoration: BoxDecoration(
                     color:
                         hasUpvoted
-                            ? const Color(0xFF8B4513)
-                            : const Color(0xFF8B4513).withOpacity(0.1),
+                            ? const Color(0xFF721908)
+                            : const Color(0xFF721908).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Material(
@@ -255,7 +254,7 @@ class _CardItemState extends State<CardItem> {
                               color:
                                   hasUpvoted
                                       ? Colors.white
-                                      : const Color(0xFF8B4513),
+                                      : const Color(0xFF721908),
                             ),
                             const SizedBox(width: 4),
                             Text(
@@ -264,7 +263,7 @@ class _CardItemState extends State<CardItem> {
                                 color:
                                     hasUpvoted
                                         ? Colors.white
-                                        : const Color(0xFF8B4513),
+                                        : const Color(0xFF721908),
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -282,8 +281,8 @@ class _CardItemState extends State<CardItem> {
                   decoration: BoxDecoration(
                     color:
                         hasDownvoted
-                            ? const Color(0xFF8B4513)
-                            : const Color(0xFF8B4513).withOpacity(0.1),
+                            ? const Color(0xFF721908)
+                            : const Color(0xFF721908).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Material(
@@ -305,7 +304,7 @@ class _CardItemState extends State<CardItem> {
                               color:
                                   hasDownvoted
                                       ? Colors.white
-                                      : const Color(0xFF8B4513),
+                                      : const Color(0xFF721908),
                             ),
                             const SizedBox(width: 4),
                             Text(
@@ -314,7 +313,7 @@ class _CardItemState extends State<CardItem> {
                                 color:
                                     hasDownvoted
                                         ? Colors.white
-                                        : const Color(0xFF8B4513),
+                                        : const Color(0xFF721908),
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -330,7 +329,7 @@ class _CardItemState extends State<CardItem> {
                 // Comment Button
                 Container(
                   decoration: BoxDecoration(
-                    color: const Color(0xFF8B4513).withOpacity(0.1),
+                    color: const Color(0xFF721908).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Material(
@@ -349,13 +348,13 @@ class _CardItemState extends State<CardItem> {
                             const Icon(
                               Icons.chat_bubble_outline,
                               size: 16,
-                              color: Color(0xFF8B4513),
+                              color: Color(0xFF721908),
                             ),
                             const SizedBox(width: 4),
                             Text(
                               '$comments',
                               style: const TextStyle(
-                                color: Color(0xFF8B4513),
+                                color: Color(0xFF721908),
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -370,56 +369,6 @@ class _CardItemState extends State<CardItem> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-// Example usage widget
-class PostFeedExample extends StatelessWidget {
-  const PostFeedExample({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final samplePost = {
-      'author': 'Syarna Savitri',
-      'subtitle': 'Cultural Storyteller, Jakarta Utara',
-      'timestamp': '24 Juli 2025 | 17.16 PM',
-      'tag1': '#Depok',
-      'tag2': '#CultureShock',
-      'title': 'Depok = Gotham City',
-      'content':
-          'Ini hal yang menurut gue paling menarik. Warga Depok itu sadar banget kota mereka sering jadi bahan bercandaan. Meme tentang Depok udah viral dari dulu. Tapi mereka nggak marah ....',
-      'upvotes': 12,
-      'downvotes': 3,
-      'comments': 5,
-    };
-
-    return Scaffold(
-      backgroundColor: const Color(0xFFF5E6D3),
-      appBar: AppBar(
-        title: const Text('Post Feed'),
-        backgroundColor: const Color(0xFF8B4513),
-        foregroundColor: Colors.white,
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          CardItem(post: samplePost),
-          CardItem(
-            post: {
-              ...samplePost,
-              'author': 'Budi Santoso',
-              'subtitle': 'Food Blogger, Bandung',
-              'title': 'Kuliner Bandung yang Wajib Dicoba',
-              'tag1': '#Bandung',
-              'tag2': '#Kuliner',
-              'upvotes': 25,
-              'downvotes': 1,
-              'comments': 8,
-            },
-          ),
-        ],
       ),
     );
   }

@@ -50,6 +50,7 @@ class _BottomSheetFormState extends State<BottomSheetForm> {
 
       widget.onSubmit?.call(newPost);
       Navigator.pop(context, newPost);
+      print('Form valid, sending data...');
     }
   }
 

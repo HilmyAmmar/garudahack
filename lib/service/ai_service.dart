@@ -18,8 +18,6 @@ class GeminiServiceWithFallback {
   GenerativeModel? _model;
 
   final List<String> _modelFallbacks = [
-    'gemini-2.5-pro',
-    'gemini-2.5-flash',
     'gemini-1.5-flash',
     'gemini-1.5-pro',
     'gemini-pro',
@@ -69,31 +67,30 @@ class GeminiServiceWithFallback {
     if (_model == null) await initialize();
 
     final validationPrompt = '''
-Anda adalah validator kota Indonesia yang sangat ketat. Tugas Anda:
+Anda adalah validator lokasi budaya Indonesia. Tugas Anda:
 
-1. HANYA terima kota-kota yang ada di Indonesia
-2. Jika ada typo, perbaiki ke nama kota Indonesia yang benar
-3. Jika bukan kota Indonesia, tolak dengan jelas
+1. Terima entitas yang relevan dengan wilayah Indonesia, seperti:
+   - Kota
+   - Provinsi
+   - Kabupaten
+   - Daerah adat
+   - Nama suku (misal: Batak, Sunda, Minang)
+2. Jika ada typo, perbaiki ke nama yang benar
+3. Tolak input yang tidak berhubungan dengan Indonesia
 
 Input: "$inputCity"
 
-Aturan ketat:
-- Hanya kota/kabupaten di Indonesia (Jakarta, Bandung, Surabaya, Medan, dll)
-- Tidak boleh negara lain (Paris, Tokyo, New York, dll)
-- Tidak boleh tempat fiktif
-- Perbaiki typo ke kota Indonesia terdekat
-
-Format jawaban:
-VALID: [nama kota yang sudah diperbaiki]
+Format jawaban HARUS:
+VALID: [nama entitas yang telah diperbaiki]
 atau
 INVALID: [alasan penolakan]
 
 Contoh:
 Input: "Jakareta" → VALID: Jakarta
-Input: "Bandeng" → VALID: Bandung  
-Input: "Paris" → INVALID: Paris bukan kota di Indonesia
-Input: "Tokyo" → INVALID: Tokyo bukan kota di Indonesia
-Input: "Bantul" → VALID: Bantul
+Input: "Sumaterra Utara" → VALID: Sumatera Utara
+Input: "Sundaa" → VALID: Sunda
+Input: "Tokyo" → INVALID: Tokyo bukan wilayah budaya Indonesia
+Input: "Atlantis" → INVALID: Atlantis tidak ada di Indonesia
 ''';
 
     try {
@@ -101,7 +98,7 @@ Input: "Bantul" → VALID: Bantul
       final response = await _model!.generateContent(content);
 
       if (response.text == null || response.text!.isEmpty) {
-        throw Exception('Gagal memvalidasi nama kota');
+        throw Exception('Gagal memvalidasi input');
       }
 
       final result = response.text!.trim();
@@ -115,8 +112,8 @@ Input: "Bantul" → VALID: Bantul
         throw Exception('Format validasi tidak dikenali');
       }
     } catch (e) {
-      print("❌ City validation error: $e");
-      throw Exception('Gagal memvalidasi kota: $e');
+      print("❌ Validation error: $e");
+      throw Exception('Gagal memvalidasi input: $e');
     }
   }
 

@@ -78,16 +78,6 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  void _handleRegister() {
-    // Navigate to register page or show register dialog
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Navigasi ke halaman registrasi'),
-        duration: Duration(seconds: 2),
-      ),
-    );
-  }
-
   Widget get topSection => Column(
     mainAxisSize: MainAxisSize.min,
     children: [
@@ -104,11 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                 color: const Color(0xff721908).withOpacity(0.1),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
-                Icons.local_fire_department,
-                size: 64,
-                color: Color(0xff721908),
-              ),
+              child: Image.asset('assets/logo.png', width: 64, height: 64),
             ),
           );
         },
@@ -163,25 +149,28 @@ class _LoginPageState extends State<LoginPage> {
                           child: topSection,
                         ),
                         SizedBox(height: screenHeight * 0.05),
-                        Image.asset(
-                          'assets/login_picture.png',
-                          height: 150,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            return Container(
-                              height: 150,
-                              width: 150,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: const Icon(
-                                Icons.image,
-                                size: 50,
-                                color: Colors.grey,
-                              ),
-                            );
-                          },
+                        Transform.translate(
+                          offset: const Offset(0, 30), // Geser ke bawah 30px
+                          child: Image.asset(
+                            'assets/login_picture.png',
+                            height: 150,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                height: 150,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[300],
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: const Icon(
+                                  Icons.image,
+                                  size: 50,
+                                  color: Colors.grey,
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -360,7 +349,7 @@ class _LoginPageState extends State<LoginPage> {
 
                             // Register Link
                             TextButton(
-                              onPressed: _handleRegister,
+                              onPressed: () => {},
                               child: const Text(
                                 'Belum punya akun? Daftar sekarang',
                                 style: TextStyle(
@@ -370,41 +359,39 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
 
-                            const SizedBox(height: 16),
-
                             // Demo credentials info
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFFBF5EB).withOpacity(0.2),
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(
-                                  color: const Color(
-                                    0xFFFBF5EB,
-                                  ).withOpacity(0.5),
-                                ),
-                              ),
-                              child: const Column(
-                                children: [
-                                  Text(
-                                    'Demo Login:',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFFFBF5EB),
-                                    ),
-                                  ),
-                                  SizedBox(height: 4),
-                                  Text(
-                                    'Username: user\nPassword: 1234',
-                                    style: TextStyle(
-                                      color: Color(0xFFFBF5EB),
-                                      fontSize: 12,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
-                              ),
-                            ),
+                            // Container(
+                            //   padding: const EdgeInsets.all(12),
+                            //   decoration: BoxDecoration(
+                            //     color: const Color(0xFFFBF5EB).withOpacity(0.2),
+                            //     borderRadius: BorderRadius.circular(8),
+                            //     border: Border.all(
+                            //       color: const Color(
+                            //         0xFFFBF5EB,
+                            //       ).withOpacity(0.5),
+                            //     ),
+                            //   ),
+                            //   child: const Column(
+                            //     children: [
+                            //       Text(
+                            //         'Demo Login:',
+                            //         style: TextStyle(
+                            //           fontWeight: FontWeight.bold,
+                            //           color: Color(0xFFFBF5EB),
+                            //         ),
+                            //       ),
+                            //       SizedBox(height: 4),
+                            //       Text(
+                            //         'Username: user\nPassword: 1234',
+                            //         style: TextStyle(
+                            //           color: Color(0xFFFBF5EB),
+                            //           fontSize: 12,
+                            //         ),
+                            //         textAlign: TextAlign.center,
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),

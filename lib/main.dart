@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:kalcer/pages/login_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +30,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: LoginPage());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(textTheme: GoogleFonts.poppinsTextTheme()),
+      home: LoginPage(),
+    );
   }
 }
