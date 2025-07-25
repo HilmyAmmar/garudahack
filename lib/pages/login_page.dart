@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kalcer/pages/home_page.dart';
+import 'package:kalcer/screens/main_navigation_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
           // Navigate to next page or save login state
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(builder: (context) => MainNavigationScreen()),
           );
         }
       } else {
@@ -304,6 +304,12 @@ class _LoginPageState extends State<LoginPage> {
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color(0xFFFBF5EB),
                                   foregroundColor: const Color(0xff721908),
+                                  disabledBackgroundColor: const Color(
+                                    0xFFFBF5EB,
+                                  ),
+                                  disabledForegroundColor: const Color(
+                                    0xff721908,
+                                  ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
@@ -311,8 +317,35 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 child:
                                     _isLoading
-                                        ? const CircularProgressIndicator(
-                                          color: Color(0xff721908),
+                                        ? Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            SizedBox(
+                                              width: 20,
+                                              height: 20,
+                                              child: CircularProgressIndicator(
+                                                strokeWidth: 2,
+                                                valueColor: AlwaysStoppedAnimation<
+                                                  Color
+                                                >(
+                                                  Color(
+                                                    0xff721908,
+                                                  ), // Your app's primary color
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(width: 12),
+                                            const Text(
+                                              'Memproses...',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                                color: Color(0xff721908),
+                                              ),
+                                            ),
+                                          ],
                                         )
                                         : const Text(
                                           'Masuk',

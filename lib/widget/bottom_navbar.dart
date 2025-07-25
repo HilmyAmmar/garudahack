@@ -5,11 +5,13 @@ import 'bottom_sheet_form.dart';
 class CustomBottomNavBar extends StatefulWidget {
   final int currentIndex;
   final Function(int) onTap;
+  final Function(Map<String, dynamic>)? onAddPost; // Add this callback
 
   const CustomBottomNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
+    this.onAddPost, // Add this parameter
   });
 
   @override
@@ -107,9 +109,15 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   void _showAddBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.transparent,
       isScrollControlled: true,
-      builder: (context) => const BottomSheetForm(),
+      backgroundColor: Colors.transparent,
+      builder:
+          (context) => BottomSheetForm(
+            onSubmit: (newPost) {
+              // Call the callback passed from parent (HomePage)
+              widget.onAddPost?.call(newPost);
+            },
+          ),
     );
   }
 }
